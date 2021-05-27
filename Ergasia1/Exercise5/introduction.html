@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Giannis Vitalis">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Creating Discord Bot with JavaScript">
+        <meta name="keywords" content="Discord, JS, DiscordJS, API, DiscordAPI, discord-bot">
+        <link rel="stylesheet" href="styles.css">
+        <title>Introduction</title>
+    </head>
+    
+    <body class="mainpage">
+        <header>
+            <figure class="logo">
+                <a href="index.html">
+                    <img class="logo1" alt="logo" srcset="../@Resources/logo1-100w.png 100w, ../@Resources/logo1-200w.png 200w" sizes="(max-width: 600px) 30px, 40px" src="../@Resources/logo1.png"></a>
+                </figure>  
+            <nav>
+                <ul>
+                    <li><a href="index.html"><abbr title="Home">Home</abbr></a></li>
+                    <li><a href="introduction.html"><abbr title="Introduction">Intro</abbr></a></li>
+                    <li><a href="installation.html"><abbr title="Installation">Install</abbr></a></li>
+                    <li><a href="example.html"><abbr title="Your First Bot">Example</abbr></a></li>
+                </ul>
+            </nav>
+            <form action="index.html" method="get">
+                <button class="button">Log In</button>
+            </form>
+        </header>
+
+        <main>
+            <article class="article-header">
+                <section class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumbs-separator">/</span>
+                    <a href="introduction.html">Intro</a>
+                </section>
+                <h1>About Discord</h1>
+                <figure class="info">
+                    <img class="profile-picture" srcset="../@Resources/profile-245w.png 245w,../@Resources/profile-490w.png 490w, ../@Resources/profile.png 980w" src = "../@Resources/profile-980w.png" sizes="(max-width: 600px) 15px,(max-width: 1400px) 20px, 25px" alt="profile-picture">
+                    <figcaption>Giannis Vitalis on Mar 30, 2021</figcaption>  
+                </figure>
+                <section class="intro">
+                    <p>An introduction to Discord and its API, Discord JS</p>
+                </section>
+            </article>
+
+            <article id="container">
+                <h2>Introduction</h2>
+                <section class="flex-container">
+                    <p>
+                        Discord is a popular group-chatting app that was released in 2015 to give gamers a place to build communities and talk.
+                        <br>Discord is free and more user friendly and has since branched out to include communities from all over the internet, ranging from writers to artists to programmers. 
+                        <br>It saw its first rise to popularity
+                        in 2016 due to heavy advertisting in <a href="https://www.twitch.tv/">Twitch.tv</a> and became widespread during the pandemic, as more people have worked, played games, and socialized online, the platform supports that it now has <cite>100+ million monthly active users</cite>.
+                    </p>
+                    <figure>
+                        <img srcset="../@Resources/discord-185w.png 185w,../@Resources/discord-370w.png 370w, ../@Resources/discord-774w.png 774w" sizes="(max-width: 600px) 50px, (max-width: 1400px) 70px, 250px" src = "../@Resources/discord.png" alt="discord-logo">
+                    </figure>
+                </section>
+                <h2>Discord Server Structure</h2>
+                <section class="flex-container">
+                    <p>
+                        Discord follows the model set by Slack that was released in 2013, but in a less formal way.
+                        <br>At a basic level, Discord is built to allow members to message each other by creating communities called <cite>servers</cite>, which can be either public or private(personal invite only).
+                        <br>Servers are created and maintained by individual users called <cite>moderators</cite> and are then filled with text channels, voice channels and since recently live streaming channels.
+                        <br>You can also share videos, images, internet links, music, and more.
+                    </p>
+                    <figure>
+                        <img srcset="../@Resources/server-350w.png 350w, ../@Resources/server-700w.png 700w" sizes="(max-width: 600px) 400px, 850px" src = "../@Resources/server.png" alt="discord-server">
+                    </figure>
+                </section>
+                <h2>Discord Bots</h2>
+                <section class="flex-container">
+                    <p>With the fast growth of Discord in popularity, it became apparent that moderators needed a way to automate certain actions in order to handle thousands of users since 
+                        automated processes, such as banning inappropriate users and reacting to user requests are vital for a community to thrive and grow.
+                        <br>So Discord launched its API that supports multiple programming languages inluding C#, JavaScript, Lua, Python and more.
+                        <br>Now users can create automated programs, aka <cite>bots</cite>, that look and act like users and automatically respond to events and commands on Discord.
+                    </p>
+                    <figure>
+                        <img srcset = "../@Resources/bot-270w.gif 270w, ../@Resources/bot.gif 552w" sizes="(max-width: 600px) 400px, 1500px" src = "../@Resources/bot.gif" alt="discord-bot">
+                    </figure>
+                </section>
+                <h2>Discord JS</h2>
+                <section class="flex-container">
+                    <p><a href="https://discord.js.org/#/">Discord.js</a> defines itself like so:
+                        <br><cite>"Discord.js is a powerful node.js module that allows you to interact with the Discord API very easily. It takes a much more object-oriented approach than most other JS Discord libraries, making your bot's code significantly tidier and easier to comprehend.
+                        Usability, consistency, and performance are key focuses of discord.js, and it also has nearly 100% coverage of the Discord API. It receives new Discord features shortly after they arrive in the API."</cite>
+                        <br>So the only prerequisites to creating a bot, is to have a fairly decent grasp of JavaScript and previous experience with an OOP programming language, so as to not get stuck on uncomplicated issues that will prove to be frustrating.
+                    </p>
+                </section>
+            </article>
+        </main>
+
+        <footer>
+            <article class="footer-info">
+                <h3>Keep up to date with more news</h3>
+                <form class="subscribe-wrapper" action="#" method=post>
+                    <input class="subscribe-input" type="email" name="EMAIL" placeholder="mail@provider.com" required>
+                    <input class="button" type="submit" value="Subscribe" name="Subscribe">
+                </form>
+            </article>
+            
+            <article class="important-links">
+                <section id="learn-more">
+                    <h4>Learn More</h4>
+                    <ul>
+                        <li><a href="https://discord.js.org/#/docs/main/stable/general/welcome">DiscordJS</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+                        <li><a href="https://nodejs.org/en/">NodeJS</a></li>
+                    </ul>
+                </section>
+                <section id="hosting">
+                    <h4>Hosting</h4>
+                    <ul>
+                        <li><a href="https://www.heroku.com/">Heroku</a></li>
+                        <li><a href="https://pebblehost.com/bot-hosting">PebbleHost</a></li>
+                    </ul>
+                </section>
+                <section id="portofolio">
+                    <h4>Portofolio</h4>
+                    <ul>
+                        <li><a href="https://docs.github.com/en">GitHub</a></li>
+                    </ul>
+                </section>
+                <section id="contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:giannis9700@gmail.com">Email</a></li>
+                    </ul>
+                </section>
+                <section id="socials">
+                    <h4>Socials</h4>
+                    <ul>
+                        <li><a href="https://www.facebook.com/">Facebook</a></li>
+                        <li><a href="https://www.twitter.com/">Twitter</a></li>
+                        <li><a href="https://www.instagram.com/">Instagram</a></li>
+                        <li><a href="https://www.discord.com/">Discord</a></li>
+                        <li><a href="https://www.youtube.com/">Youtube</a></li>
+                    </ul>
+                </section>
+            </article>
+        </footer>    
+    </body>    
+</html> 

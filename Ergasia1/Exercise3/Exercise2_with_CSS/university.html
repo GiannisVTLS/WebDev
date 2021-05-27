@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Giannis Vitalis">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="autobiography">
+        <meta name="keywords" content="Java, C++, CPP, JavaScript, JS, Discord, Bot">
+        <link rel="stylesheet" href="styles.css">
+        <title>Uni Experience</title>
+    </head>
+    
+    <body>
+        <header> 
+            <h1><abbr title="University">University</abbr></h1>
+            <nav>
+                <ul>
+                    <li><a href="work.html"><abbr title="Work">Work</abbr></a></li>
+                    <li><a id="active" href="university.html"><abbr title="University">University</abbr></a></li>
+                    <li><a href="index.html"><abbr title="Home">Home</abbr></a></li>
+                </ul>
+            </nav>            
+        </header> 
+
+        <main>
+            <article>
+                
+                <h2 id="java">Java</h2>
+                <hr>
+                <section>
+                    <h3>Distributed Systems</h3>
+                    <p>
+                        During spring of 2020, I had the pleasure of having to work on a very interesting and complex assignment 
+                        while the COVID-19 pandemic was just starting. The assignment was about developing a music streaming on demand app
+                        using Java and Android.
+                    </p>    
+                    <p>
+                        The first part was about designing and developing the music streaming Framework(Event Delivering System)
+                        that would be responsible for supporting the on demand stream or download of the music library that was provided and consisted of 3 main components:
+                    </p>
+                    <ul>
+                        <li>Publisher Node: Responsible for saving, searching and exporting the music</li>
+                        <li>Broker Nodes: Balancing the load from the user requests</li>
+                        <li>Consumer Node: Responsible for accepting user requests, could be either online or offline</li>
+                    </ul>
+                    <p>
+                        The second part was about the creation of an Android app that utilized our framework in a way that the music could be
+                        played from the customers phone. The Home Screen of the app included a list of all the available artists, albums and songs.
+                    </p>
+                    <p>
+                        The consumer node will notify the Broker nodes of the user request and after receiving a positive response the media player
+                        will open and play the song the user requested.
+                    </p>
+                </section>
+                <section>
+                    <h3>Artificial Intelligence</h3>
+                    <p>
+                        Although a field of CS that involves a lot of math, I was glad I gave it a try because I saw considerable progress
+                        in my programming skills because of the two assignments I worked on throughout the semester.
+                    </p>
+                    <h4>A*</h4>
+                    <p>
+                        For the first assignment we were asked to develop a program in Java or Python that would find the optimal solution to the Bridge and Torch problem.
+                        This problem is about a family trying to cross a bridge that can hold up to 2 people, the torch has limited time and the algorithm must find the
+                        best combination of people to cross without the torch going out.
+                    </p>
+                    <p>
+                        The A* algorithm manages that by calculating the sum of the real crossing time and a heuristic function of the couple
+                        trying to pass to the opposite side of the bridge, the sum is inserted in a priority queue and when every possible combinations sum is calculated
+                        it chooses the couple with the lowest sum as the next step. Then it repeats until everyone has crossed over. This path is now considered final and optimal.
+                    </p>
+                    <h4>Multinomial Naive Bayes Classifier</h4>
+                    <p>
+                        For the second assignment we were given a public dataset called «Large Movie Review Dataset» that contains movie reviews and were asked to develop a text classification
+                        program in Java, C++ or Python.
+                    </p>
+                    <p>
+                        Each review was categorized as positive if its score was &lt;6 or negative if its score was &gt;4, we had to use this dataset to train the algorithm
+                        so it can accurately classify a review as positive or negative based only on what the user wrote.
+                    </p>
+                </section>  
+                <h2 id="cpp">C++</h2> 
+                <hr>
+                <section>
+                    <p>
+                        I have been postponing this course for a while because I couldn't grasp the concept of pointers at a level where I was confident of
+                        using them regularly.
+                    </p>
+                    <p>
+                        Thankfully this year the project was about using the API of an engine to create a game of our choice, a fascinating subject for someone
+                        who wants to try their luck in Game Development. It certainly sparked my interest and motivated me to work on a daily basis. 
+                    </p>
+                    <p>
+                        The assignment was about creating an arcade game using the SGG library that was created for this purpose, the use of dynamic memory, inheritance,
+                        polymorphism and collection was obligatory and good planning and code structured would be taken into consideration.
+                    </p>
+                    <p>
+                        My team consisted of me and another colleague, we decided to work on a simple game called Pong on which we added a Main Menu, Statistics and
+                        Player History screens in order to add more complexity and submit a game that we felt was complete.
+                    </p>  
+                    <p>
+                        One certain feature that proved challenging was the collision of the ball with the players and the walls. The collision with the players required some
+                        math in order to calculate the trajectory of the ball, since hitting the middle of the player should simply send back the ball. Hitting the top or bottom required
+                        should send the ball back at a different angle.
+                    </p>
+                    <img class="gallery" src = "../../@Resources/cpp1.png" height="250" width="300" alt="cpp-menu">
+                    <img class="gallery" src = "../../@Resources/cpp2.png" height="250" width="350" alt="cpp-game">
+                </section>
+            </article>
+        </main>
+
+        <footer>
+            <hr>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <address>
+                    Written by Giannis Vitalis.<br>
+                    Socials:
+                    <a href="https://www.facebook.com/" aria-label="Facebook" class="fa fa-facebook"></a>
+                    <a href="https://www.twitter.com" aria-label="Twitter" class="fa fa-twitter"></a>
+                    <a href="https://www.instagram.com" aria-label="Instagram" class="fa fa-instagram"></a>
+                </address> 
+        </footer> 
+    </body>   
+</html>

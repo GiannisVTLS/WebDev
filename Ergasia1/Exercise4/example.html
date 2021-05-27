@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Giannis Vitalis">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Creating Discord Bot with JavaScript">
+    <meta name="keywords" content="Discord, JS, DiscordJS, API, DiscordAPI, discord-bot">
+    <link rel="stylesheet" href="styles.css">
+    <title>Example</title>
+</head>
+
+<body class="mainpage">
+    <header>
+        <figure class="logo">
+            <a href="index.html">
+                <img class="logo1" alt="logo" src="../@Resources/logo1-200w.png" height="40"></a>
+        </figure>
+        <nav>
+            <ul>
+                <li><a href="index.html"><abbr title="Home">Home</abbr></a></li>
+                <li><a href="introduction.html"><abbr title="Introduction">Intro</abbr></a></li>
+                <li><a href="installation.html"><abbr title="Installation">Install</abbr></a></li>
+                <li><a href="example.html"><abbr title="Your First Bot">Example</abbr></a></li>
+            </ul>
+        </nav>
+        <form action="index.html" method="get">
+            <button class="button">Log In</button>
+        </form>
+    </header>
+
+    <aside>
+        <h4>Contents</h4>
+        <ul>
+            <li><a href=example.html#create>Bot File</a></li>
+            <li><a href=example.html#logging>Console Log</a></li>
+            <li><a href=example.html#replying>Reply</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <article class="article-header">
+            <section class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span class="breadcrumbs-separator">/</span>
+                <a href="introduction.html">Intro</a>
+                <span class="breadcrumbs-separator">/</span>
+                <a href="example.html">Example</a>
+            </section>
+            <h1>Creating Your First Bot</h1>
+            <figure class="info">
+                <img class="profile-picture" src="../@Resources/profile-980w.png" width="30" alt="profile-picture">
+                <figcaption>Giannis Vitalis on Mar 30, 2021</figcaption>
+            </figure>
+            <section class="intro">
+                <p>Coding your first bot</p>
+            </section>
+        </article>
+
+        <article id="container">
+            <h2 id="create">Creating the bot file</h2>
+            <section>
+                <p>
+                    In order to start coding you will need a code editor, like <a href="https://code.visualstudio.com/">Visual Studio Code</a>, but you can use whatever editor you prefer, next step is to create a new file. I recommend Visual Studio Code
+                    since I have used extensively and its user interface is not intimidating for new users.
+                    <br>The new file that was created should preferably be named <span class="code">index.js</span>, but that is a coding convention that you can ignore if you want, as long as it ends with <span class="code">.js</span>.
+                </p>
+            </section>
+            <h2 id="logging">Logging in to Discord</h2>
+            <section>
+                <p>
+                    Once you've created a new file, you should copy the following code.
+                    <br>Although this contains frequently used JavaScript, some of the code is about calling the Discord API, no need to worry about it, you just need to see if everything is setup correctly.
+                </p>
+                <figure>
+                    <figcaption>So without further ado, here is the code snippet: </figcaption>
+                    <pre><code>const Discord = require('discord.js');   
+                            const client = new Discord.Client();
+                            
+                            client.once('ready', () => {
+                                console.log('Ready!');
+                            });
+
+                            client.login('your-token-goes-here');</code></pre>
+                </figure>
+            </section>
+            <h2 id="replying">Replying to User messages</h2>
+            <section>
+                <p>
+                    Above the <code>client.login()</code> line add the following piece of code:
+                </p>
+                <figure>
+                    <pre><code>client.on('message', message => {    
+                            console.log(message.content);
+                        });</code></pre>
+                </figure>
+                <p>
+                    Notice that we call the <code>on()</code> method now, with <cite>'message'</cite> as arguments, this means that it triggers every time a message is sent in our server. The rest of the function just displays the message sent in our
+                    console.
+                </p>
+                <p>
+                    In order to reply to a users message replace <code>console.log(message.content);</code> with the following:
+                </p>
+                <figure>
+                    <pre><code>if (message.content === '!ping') { 
+                            message.channel.send('Pong.');
+                        }</code></pre>
+                    <figcaption>Now try sending as a user <code>!ping</code> in any channel in your server and see what happens!</figcaption>
+                </figure>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <article class="footer-info">
+            <h3>Keep up to date with more news</h3>
+            <form class="subscribe-wrapper" action="#" method=post>
+                <input class="subscribe-input" type="email" name="EMAIL" placeholder="mail@provider.com" required>
+                <input class="button" type="submit" value="Subscribe" name="Subscribe">
+            </form>
+        </article>
+
+        <article class="important-links">
+            <section id="learn-more">
+                <h4>Learn More</h4>
+                <ul>
+                    <li><a href="https://discord.js.org/#/docs/main/stable/general/welcome">DiscordJS</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+                    <li><a href="https://nodejs.org/en/">NodeJS</a></li>
+                </ul>
+            </section>
+            <section id="hosting">
+                <h4>Hosting</h4>
+                <ul>
+                    <li><a href="https://www.heroku.com/">Heroku</a></li>
+                    <li><a href="https://pebblehost.com/bot-hosting">PebbleHost</a></li>
+                </ul>
+            </section>
+            <section id="portofolio">
+                <h4>Portofolio</h4>
+                <ul>
+                    <li><a href="https://docs.github.com/en">GitHub</a></li>
+                </ul>
+            </section>
+            <section id="contact">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:giannis9700@gmail.com">Email</a></li>
+                </ul>
+            </section>
+            <section id="socials">
+                <h4>Socials</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/">Facebook</a></li>
+                    <li><a href="https://www.twitter.com/">Twitter</a></li>
+                    <li><a href="https://www.instagram.com/">Instagram</a></li>
+                    <li><a href="https://www.discord.com/">Discord</a></li>
+                    <li><a href="https://www.youtube.com/">Youtube</a></li>
+                </ul>
+            </section>
+        </article>
+    </footer>
+</body>
+
+</html>

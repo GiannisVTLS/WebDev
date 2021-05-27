@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Giannis Vitalis">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Creating Discord Bot with JavaScript">
+    <meta name="keywords" content="Discord, JS, DiscordJS, API, DiscordAPI, discord-bot">
+    <link rel="stylesheet" href="styles.css">
+    <title>Installation</title>
+</head>
+
+<body class="mainpage">
+    <header>
+        <figure class="logo">
+            <a href="index.html">
+                <img class="logo1" alt="logo" srcset="../@Resources/logo1-100w.png 100w, ../@Resources/logo1-200w.png 200w" sizes="(max-width: 600px) 30px, 40px" src="../@Resources/logo1.png"></a>
+            </figure> 
+        <nav>
+            <ul>
+                <li><a href="index.html"><abbr title="Home">Home</abbr></a></li>
+                <li><a href="introduction.html"><abbr title="Introduction">Intro</abbr></a></li>
+                <li><a href="installation.html"><abbr title="Installation">Install</abbr></a></li>
+                <li><a href="example.html"><abbr title="Your First Bot">Example</abbr></a></li>
+            </ul>
+        </nav>
+        <form action="login.html" method="get">
+            <button id="log-in" class="button">Log In</button>
+        </form>
+    </header>
+
+    <aside>
+        <h4>Contents</h4>
+        <ul>
+            <li><a href=installation.html#discordjs>DiscordJS</a></li>
+            <li><a href=installation.html#createbot>Creating a bot</a></li>
+            <li><a href=installation.html#addserver>Add to Server</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <article class="article-header">
+            <section class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span class="breadcrumbs-separator">/</span>
+                <a href="introduction.html">Intro</a>
+                <span class="breadcrumbs-separator">/</span>
+                <a href="installation.html">Installation</a>
+            </section>
+            <h1>Quick-Install Guide</h1>
+            <figure class="info">
+                <img class="profile-picture" srcset="../@Resources/profile-245w.png 245w,../@Resources/profile-490w.png 490w, ../@Resources/profile.png 980w" src = "../@Resources/profile-980w.png" sizes="(max-width: 600px) 15px,(max-width: 1400px) 20px, 25px" alt="profile-picture">
+                <figcaption>Giannis Vitalis on Apr 2, 2021</figcaption>
+            </figure>
+            <section class="intro">
+                <p>Detailed guide on how to install and use DiscordJS</p>
+            </section>
+        </article>
+
+        <article id="container">
+            <h2 id="discordjs">DiscordJS</h2>
+            <section>
+                <p>
+                    Since DiscordJS is a node.js module, the first step is to install node.js. You can do so by going to
+                    the <a href="https://nodejs.org/">Node.js website</a>.
+                    <br>
+                    Now that node.js is installed, getting DiscordJS is fairly trivial.
+                    <br>All you need to do is open your console and run the following command:
+                    <code>npm install discord.js</code>.
+                    <br>This might take a bit of time depending on your internet connection, but it should be fairly
+                    fast.
+                </p>
+            </section>
+            <h2 id="createbot">Creating a bot</h2>
+            <section>
+                <p>There are a few more steps to complete before you can start coding though.
+                    <br>The next step you need to take is setting up an actual Discord bot application via Discord's
+                    website.
+                    <br>Thankfully Discord Devs have made it a fairly easy process. The steps you need to take are as
+                    follows:
+                </p>
+                <ul>
+                    <li>Open the <a href="https://discord.com/developers/applications">Discord developer portal</a> and
+                        log into your account.</li>
+                    <li>Click on the <cite>New Application</cite> button.</li>
+                    <li>Enter a name and optionally select a team.</li>
+                    <li>Then confirm the pop-up window by clicking the <cite>Create</cite> button.</li>
+                </ul>
+                <p>
+                    Click the <cite>Add Bot</cite> button on the right and confirm the pop-up window by clicking
+                    <cite>Yes, do it!</cite>. The Discord Bot was now created and you now have to ability to customize
+                    some of its attributes before adding it to your server.
+                </p>
+                <p>In the panel that was created, you can customize its profile picture, set its username, and set its
+                    visibility to either public or private.
+                    <br>From this window you can also access the token unique to your bot, either by revealing it or
+                    pressing the <cite>Copy</cite> button, this will be useful later on.
+                    <br>When we ask you to paste your token somewhere, this is the value that you need to put in.
+                </p>
+                <figure>
+                    <img srcset= "../@Resources/create-930w.png 930w,../@Resources/create-1865w.png 1865w" sizes="(max-width: 600px) 300px, 1000px" src = "../@Resources/create-1865w.png" width="770" alt="create-bot">
+                </figure>
+            </section>
+            <h2 id="addserver">Adding to Server</h2>
+            <section>
+                <p>In order to add the bot on your server you will need to create a unique invite link and paste it into
+                    your browser.
+                    <br>One such link will look like this:
+                    <br><code>https://discord.com/oauth2/authorize?client_id=123456789012345678&scope=bot</code>
+                    <br>While the process of creating one is fairly simple once you breakdown the sections of it:
+                </p>
+                <ul>
+                    <li>The first part is just Discord's standard structure for authorizing an OAuth2 application (such
+                        as your bot application) for entry to a Discord server.</li>
+                    <li>The second part that says <code>client_id=... </code> &nbsp;is to specify which application you
+                        want to authorize. You'll need to replace this part with your client's ID to create a valid
+                        invite link.</li>
+                    <li>Lastly, the third part, which says <code>scope=bot</code> , specifies that you want to add this
+                        application as a Discord bot.</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <article class="footer-info">
+            <h3>Keep up to date with more news</h3>
+            <form class="subscribe-wrapper" action="#" method=post>
+                <input class="subscribe-input" type="email" name="EMAIL" placeholder="mail@provider.com" required>
+                <input class="button" type="submit" value="Subscribe" name="Subscribe">
+            </form>
+        </article>
+
+        <article class="important-links">
+            <section id="learn-more">
+                <h4>Learn More</h4>
+                <ul>
+                    <li><a href="https://discord.js.org/#/docs/main/stable/general/welcome">DiscordJS</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+                    <li><a href="https://nodejs.org/en/">NodeJS</a></li>
+                </ul>
+            </section>
+            <section id="hosting">
+                <h4>Hosting</h4>
+                <ul>
+                    <li><a href="https://www.heroku.com/">Heroku</a></li>
+                    <li><a href="https://pebblehost.com/bot-hosting">PebbleHost</a></li>
+                </ul>
+            </section>
+            <section id="portofolio">
+                <h4>Portofolio</h4>
+                <ul>
+                    <li><a href="https://docs.github.com/en">GitHub</a></li>
+                </ul>
+            </section>
+            <section id="contact">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:giannis9700@gmail.com">Email</a></li>
+                </ul>
+            </section>
+            <section id="socials">
+                <h4>Socials</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/">Facebook</a></li>
+                    <li><a href="https://www.twitter.com/">Twitter</a></li>
+                    <li><a href="https://www.instagram.com/">Instagram</a></li>
+                    <li><a href="https://www.discord.com/">Discord</a></li>
+                    <li><a href="https://www.youtube.com/">Youtube</a></li>
+                </ul>
+            </section>
+        </article>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

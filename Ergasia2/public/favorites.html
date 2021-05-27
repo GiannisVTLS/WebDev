@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Giannis Vitalis">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mybooklist" content="autobiography">
+    <meta name="keywords" content="book, search, author, title">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>MyBookList</title>
+</head>
+<body>
+    <header>
+        <nav id="menuToggle">
+            <input type="checkbox" />
+            <div><span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article id="favorites-list"></article>
+    </main>
+    
+    <footer>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <address>
+                Written by Giannis Vitalis.<br>
+                Socials:
+                <a href="https://www.facebook.com/" aria-label="Facebook" class="fa fa-facebook"></a>
+                <a href="https://www.twitter.com" aria-label="Twitter" class="fa fa-twitter"></a>
+                <a href="https://www.instagram.com" aria-label="Instagram" class="fa fa-instagram"></a>
+            </address>
+            <button onclick="topFunction()" id="go-top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button> 
+    </footer>
+    <script src = "/static/js/scripts.js"></script>
+</body>
+</html>

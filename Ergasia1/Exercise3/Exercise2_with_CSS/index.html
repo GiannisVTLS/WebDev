@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Giannis Vitalis">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="autobiography">
+        <meta name="keywords" content="HTML, CSS, JavaScript, autobiography, Vitalis">
+        <link rel="stylesheet" href="styles.css">
+        <title>Home</title>
+    </head>
+    
+    <body>
+        <header> 
+            <h1><abbr title="Home">Home</abbr></h1>
+            <nav>
+                <ul>
+                    <li><a href="work.html"><abbr title="Work">Work</abbr></a></li>
+                    <li><a href="university.html"><abbr title="University">University</abbr></a></li>
+                    <li><a id="active" href="index.html"><abbr title="Home">Home</abbr></a></li>
+                </ul>
+            </nav>            
+        </header>    
+
+        <main>
+            <article>
+                <section id="profile">
+                    <h2>About me</h2> 
+                    <hr>
+                    <img src = "../../@Resources/fb-profile.jpg" width="80" height="80" alt="profile-picture">
+                    <p>I'm a 24 year old university student and aspiring software developer
+                        currently living in Athens. My low perfomance during the first semesters
+                        made me abandon my education for 3 years. 
+                    </p>
+                    <p>I worked as a waiter for a year but luck made me land an IT job in a small
+                        privately owned company which sparked my interest in CS again, after gathering experience for
+                        a year I decided to quit and finish my education.
+                    </p>                    
+                    <p>
+                        I like video games and I have competed at the highest level in World of Warcaft, League of Legends
+                        and Teamfight Tactics, I have also travelled in foreign countries like France and the UK, planning a trip to
+                        Japan after the COVID-19 situation is resolved.
+                    </p>    
+                </section>
+                
+                <section>
+                    <h2>Experience</h2>
+                    <ol type="I">
+                        <li><a href="university.html#java"><abbr title="Java experience">Java</abbr></a></li>
+                        <li><a href="university.html#cpp"><abbr title="C++ experience">C++</abbr></a></li>
+                        <li><a href="work.html#js"><abbr title="JavaScript experience">JavaScript</abbr></a></li>
+                        <li><a href="work.html#joomla"><abbr title="Joomla experience">Joomla</abbr></a></li>
+                        <li><a href="work.html#ahk"><abbr title="AHK experience">AutoHotKey</abbr></a></li>
+                    </ol>  
+                </section>              
+            </article>
+            <fieldset>
+                <legend>Contact Form</legend>
+                <form action="mailto:giannis9700@gmail.com" method="POST">
+
+                    <label for="first-name">Name:</label>
+                    <input type="text" id="first-name" name="first-name" pattern="[Α-Ωα-ωA-Za-z]{2,}"
+                        placeholder="Your name.." required>
+
+                    <label for="last-name">Last name:</label>
+                    <input type="text" id="last-name" name="last-name" pattern="[Α-Ωα-ωA-Za-z]{2,}"
+                        placeholder="Your last name.." required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your email..." autocomplete="email" required>
+                    
+                    <label for="comment">Your message: </label>
+                    <textarea id="comment" name="comment" rows="2" cols="30" placeholder="Add a message"></textarea>
+
+                    <input type="submit" value="Submit">
+                
+                </form>
+            </fieldset>
+        </main>
+
+        <footer>
+            <hr>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <address>
+                    Written by Giannis Vitalis.<br>
+                    Socials:
+                    <a href="https://www.facebook.com/" aria-label="Facebook" class="fa fa-facebook"></a>
+                    <a href="https://www.twitter.com" aria-label="Twitter" class="fa fa-twitter"></a>
+                    <a href="https://www.instagram.com" aria-label="Instagram" class="fa fa-instagram"></a>
+                </address> 
+        </footer>    
+    </body>    
+</html> 
