@@ -1,6 +1,7 @@
 const { Console } = require('console')
 const express = require('express')
 const app = express()
+const path = require('path')
 
 var favorites = []
 
@@ -21,11 +22,13 @@ app.get('/', function(req, res){
         console.log(err)
     })
 })
+app.get('/api/favorites', function (req, res){
+    res.json(favorites)
+})
 
-app.post('/fav', function(request, response){
+app.post('/api/fav', function(request, response){
     const works = request.body
     const fs = require('fs');
-    const path = require('path');
     
     let item = []
     for(var key in works) {
@@ -49,7 +52,7 @@ app.post('/fav', function(request, response){
     });
 })
 
-app.post('/api', (request, response) => {
+app.post('/api/action', (request, response) => {
     const newFav = request.body
     for(var i=0; i< favorites.length;i++){
         if(favorites[i].workid === newFav.workid){
@@ -68,6 +71,17 @@ app.post('/api', (request, response) => {
         title: newFav.title,
         author: newFav.author
     });
+})
+
+app.delete('/api/favorites/:id', function(req, res){
+    if(favorites.length <= req.params.id) {
+        res.statusCode = 404;
+        return res.send('Error 404: No quote found');
+    }
+    
+    favorites.splice(req.params.id, 1);
+    writeToJSON(favorites)
+    res.json(true);
 })
 
 function writeToJSON(fav){

@@ -26,7 +26,7 @@ function handleFavorites(){
             buttonID = buttonID.slice(9);
             buttonID = parseInt(buttonID)
     
-            const response = await fetch('/api', {
+            const response = await fetch('/api/action', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ function searchBar(e){
     .then(res => res.json())
     .then(async data => {
         works = data.work
-        const response = await fetch('/fav', {
+        const response = await fetch('/api/fav', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -99,24 +99,32 @@ function searchBar(e){
 
 
 function printResults(){ //**CHANGE HERE INDEX IF USE 2 PAGES */
-    templates.searchResults = Handlebars.compile(`{{#each this}}
-    <section class="book-container"  id="{{workid}}">
-        <section class="book-title">
-            {{#if (isfav workid)}}
-                <button id="book-key-{{@key}}_active" target="_book-favorite"><i class="fa fa-heart" aria-hidden="true"></i></button>
-            {{else}}
-                <button id="book-key-{{@key}}" target="_book-favorite"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-            {{/if}}
-            <h2 class="book-title"">{{titleweb}}</h2>
-            <q class="book-author">Written By: {{authorweb}}</q>
-        </section>                                          
-        {{#if (isdefined titles.isbn)}}
-            <figure><img class="book-picture" alt="book-cover-{{workid}}" src = "https://reststop.randomhouse.com/resources/titles/{{titles.isbn.0.$}}" height="200px"></figure>
-        {{else}}
-            <figure><img class="book-picture" alt="book-cover-{{workid}}" src = "https://reststop.randomhouse.com/resources/titles/{{titles.isbn.$}}" height="200px"></figure>
-        {{/if}}
-    </section>
-    {{/each}}`)
+    templates.searchResults = Handlebars.compile(`
+    {{#if (isdefined this)}}
+        {{#each this}}
+            <section class="book-container"  id="{{workid}}">
+                <section class="book-title">
+                    {{#if (isfav workid)}}
+                        <button id="book-key-{{@key}}_active" target="_book-favorite"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                    {{else}}
+                        <button id="book-key-{{@key}}" target="_book-favorite"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                    {{/if}}
+                    <h2 class="book-title"">{{titleweb}}</h2>
+                    <q class="book-author">Written By: {{authorweb}}</q>
+                </section>                                          
+                {{#if (isdefined titles.isbn)}}
+                    <figure><img class="book-picture" alt="book-cover-{{workid}}" src = "https://reststop.randomhouse.com/resources/titles/{{titles.isbn.0.$}}" height="200px"></figure>
+                {{else}}
+                    <figure><img class="book-picture" alt="book-cover-{{workid}}" src = "https://reststop.randomhouse.com/resources/titles/{{titles.isbn.$}}" height="200px"></figure>
+                {{/if}}
+            </section>
+        {{/each}}
+    {{else}}
+        <figure id="no-results">
+            <img alt="no-results" src="@Resources/search.png" height="200px">
+            <figcaption>Could not find any results for your search.</figcaption>
+        </figure>
+    {{/if}}`)
     let temp = templates.searchResults(works)
     let div = document.getElementById("title-list")
     div.innerHTML = temp
