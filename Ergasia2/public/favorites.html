@@ -25,6 +25,13 @@
         </nav>
     </header>
 
+    <aside id="filter-aside">
+        <form id="filter-side" name="filter-form" class="filter">
+            <label for="filter-input">Search favorites</label> 
+            <input id="filter-input" type="text" name="filter-input" onkeyup="filterResults()" placeholder="Filter">
+        </form>
+    </aside>
+
     <main>
         <article id="fav-list"></article>
     </main>

@@ -102,7 +102,7 @@ function searchBar(e){
 
 
 
-function printResults(){ //**CHANGE HERE INDEX IF USE 2 PAGES */
+function printResults(){
     templates.searchResults = Handlebars.compile(`
     {{#if (isdefined this)}}
         {{#each this}}

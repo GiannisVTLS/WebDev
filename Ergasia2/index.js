@@ -5,10 +5,15 @@ const path = require('path')
 
 var favorites = []
 
+function filterByValue(array, string) {
+    return array.filter(o =>
+        Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
+}
+
 app.use('/static',
     express.static(__dirname + '/public'))
 
-app.use(express.json({limit: '1mb'},{type: ['application/json', 'text/plain']})) //Check documentation
+app.use(express.json({limit: '1mb'},{type: ['application/json']})) //Check documentation
 
 app.use(express.urlencoded({ extended: false }))
 
@@ -24,6 +29,22 @@ app.get('/', function(req, res){
 })
 app.get('/api/favorites', function (req, res){
     res.json(favorites)
+})
+
+app.post('/api/favorites', (request, response) => {
+    let filter = JSON.stringify(request.body.keyword).replace(/\"/g, "").toLowerCase()
+    filter = filter.trim()
+    filter = filter.split(" ")
+    let titles = [];
+    for(let i=0; i<filter.length; i++) {
+        titles.push(filterByValue(favorites, filter[i]))
+    }
+    let allTitles = [].concat.apply([], titles);
+    allTitles = allTitles.filter((value,index,array)=>array.findIndex(t=>(t.workid === value.workid))===index)
+    response.json({
+        status: "success",
+        titles: allTitles
+    });
 })
 
 app.post('/api/fav', function(request, response){

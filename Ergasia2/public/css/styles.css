@@ -43,6 +43,9 @@ h3{
     margin-top: 2%;
 }
 
+aside {
+    grid-area: sidebar;
+}
 aside a {
     color: rgb(255, 255, 255);
 }
@@ -138,7 +141,20 @@ button[target=_book-favorite] {
     display: none;
     flex-direction: column;
 }
+#filter-side{
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
 
+#filter-side input {
+    width: 80%;
+    height: 45px;
+    font-size: 1rem;
+    border: 1px solid #D0CFCE;
+    outline: none;
+    border-radius: 10px;
+}
 .book-container, #sidebar-aside {
     background-color: #37393dea;
     color: white;
@@ -164,7 +180,6 @@ button[target=_book-favorite] {
     padding: 5% 5%;
     align-self: flex-start;
     display: none;
-    grid-area: sidebar;
 }
 #sidebar-aside h4{
     margin-top: 2%;
@@ -411,8 +426,14 @@ button[id=go-top] {
 }
 
 @media only screen and (max-width:650px) and (orientation: portrait) {
-    #sidebar-aside{
+    aside {
         grid-area: aside;
+    }
+
+    #filter-side{
+        align-items: center;
+    }
+    #sidebar-aside{
         margin-right: 0%;
     }
 

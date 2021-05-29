@@ -1,9 +1,30 @@
-var favWorks = []
 var templates = {};
 var favButtons = [];
 
 if (document.URL.includes("favorites.html")) {
     window.addEventListener('load', getFavorites())
+    document.getElementById('filter-input').value = ''    
+}
+
+var timeout
+function filterResults(){
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+        let filterValue = document.getElementById('filter-input').value
+        fetch('/api/favorites', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                keyword: filterValue
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            printResults(data.titles);
+        })
+    }, 1000);
 }
 
 function getFavorites(){
@@ -15,10 +36,9 @@ function getFavorites(){
     })
     .then(res => res.json())
     .then(data =>{
-        favWorks = data
-        return printResults()
+        printResults(data)
     })
-    .then((data) =>{
+    .then(() =>{
         favButtons = document.querySelectorAll('[id^="fav-key-"]');
         for(const button of favButtons){
             button.addEventListener('click', (button) => {
@@ -35,7 +55,7 @@ function getFavorites(){
     })
 }
 
-function printResults(){ //**CHANGE HERE INDEX IF USE 2 PAGES */
+function printResults(prints){
     templates.favResults = Handlebars.compile(`
         {{#each this}}
             <section class="fav-container"  id="{{workid}}">
@@ -49,10 +69,10 @@ function printResults(){ //**CHANGE HERE INDEX IF USE 2 PAGES */
     templates.noResults = Handlebars.compile(`
     <figure id="no-results">
         <img alt="no-results" src="@Resources/search.png" height="200px">
-        <figcaption>You don't have any favorites.</figcaption>
+        <figcaption>OOPS! Found Nothing.</figcaption>
     </figure>`)
-    if(favWorks.length > 0){
-        let temp = templates.favResults(favWorks)
+    if(prints.length > 0){
+        let temp = templates.favResults(prints)
         let div = document.getElementById("fav-list")
         div.innerHTML = temp
     }else{
