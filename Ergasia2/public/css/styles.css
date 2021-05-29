@@ -363,6 +363,53 @@ button[id=go-top] {
     background: none;
 }
 
+
+/*credit for loading element: https://codepen.io/romankosov/pen/qpvWGg*/
+#background-loader-123 {
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    cursor: wait;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    padding-right: 15px;
+}
+
+@keyframes lineLoading {
+    50% {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(100%, 0);
+    }
+}
+
+.line-loader,
+.line-loader:after {
+    position: fixed;
+    height: 4px;
+}
+
+.line-loader {
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    width: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.line-loader:after {
+    content: "";
+    width: 100%;
+    transform: translate(-100%, 0);
+    background-color: #ffffff;
+    animation: lineLoading 4000ms cubic-bezier(0.08, 0.57, 0.97, 0.59);
+    animation-iteration-count: infinite;
+}
+
 @media only screen and (max-width:650px) and (orientation: portrait) {
     #sidebar-aside{
         grid-area: aside;

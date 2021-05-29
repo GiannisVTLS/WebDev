@@ -57,7 +57,10 @@ function searchBar(e){
     works = []
     if(e.target.id === 'search-center') var userSearch = document.getElementById("search-bar").value
     if(e.target.id === 'search-side') var userSearch = document.getElementById("search-input").value
-
+    document.getElementById("sidebar-aside").style.display = "none";
+    document.getElementById("title-list").style.display = "none";
+    document.getElementById("search-center").style.display = "none";
+    document.getElementById("background-loader-123").style.display = "block";
     fetch('https://reststop.randomhouse.com/resources/works?start=0&max=0&expandLevel=1&search=' + encodeURIComponent(userSearch.trim()), {
         headers: {
             'Accept': 'application/json'}
@@ -65,6 +68,7 @@ function searchBar(e){
     .then(res => res.json())
     .then(async data => {
         works = data.work
+        
         const response = await fetch('/api/fav', {
             method: 'POST',
             headers: {
@@ -84,8 +88,8 @@ function searchBar(e){
         return success
     })
     .then(() => {
+        document.getElementById("background-loader-123").style.display = "none";
         document.getElementById("go-top").style.display = "block";
-        document.getElementById("search-center").style.display = "none";
         document.getElementById("sidebar-aside").style.display = "flex";
         document.getElementById("title-list").style.display = "flex";
         document.getElementsByTagName("html")[0].style['overflow-y'] = "scroll";
