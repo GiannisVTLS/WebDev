@@ -1,0 +1,12 @@
+<form id="form-container" action="/api/edit/{{ workid }}" method="POST">
+    <fieldset>
+        <h1>WorkID {{workid}}</h1>
+        <label for="title">Title</label>
+        <input type="string" size=80 id="title" name="title" placeholder="{{ title }}" value=""/><br/>
+        <label for="author">Author:</label>
+        <input type="string" size=80 id="author" name="author" placeholder="{{ author }}" value=""/><br/>
+        <label for="comment">Your review: </label>
+        <textarea id="comment" name="comment" rows="2" cols="30" placeholder="Add a review"></textarea>
+        <input class="button" type="submit" name="submit" id="submit-button" value="Submit" />
+    </fieldset>
+</form>

@@ -4,7 +4,7 @@ var favButtons = [];
 if (document.URL.includes("favorites.html")) {
     window.addEventListener('load', getFavorites())
     document.getElementById('filter-input').value = ''    
-}
+} 
 
 var timeout
 function filterResults(){
@@ -42,7 +42,6 @@ function getFavorites(){
         favButtons = document.querySelectorAll('[id^="fav-key-"]');
         for(const button of favButtons){
             button.addEventListener('click', (button) => {
-                console.log(button)
                 let id = button.target.parentElement.id.slice(8)
                 id = id.split("_").shift()
                 fetch(`/api/favorites/${id}`, {
@@ -55,15 +54,35 @@ function getFavorites(){
     })
 }
 
+function editFavorites(e){
+    let editID = e.target.parentNode.id.slice(9)
+    fetch('/api/edit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            workid: editID
+        })
+    }).then(() => window.location.href = '/static/api/edit')
+}
+
 function printResults(prints){
     templates.favResults = Handlebars.compile(`
+        <h1>User Favorites</h1>
         {{#each this}}
             <section class="fav-container"  id="{{workid}}">
-                <button id="edit-key-{{@key}}" target="_edit-favorite"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                <button id="edit-key-{{workid}}" onclick="editFavorites(event)" target="_edit-favorite"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <h2 class="fav-title"">{{title}}</h2>
                 <q class="fav-author">{{author}}</q>  
-                <button id="fav-key-{{@key}}_active" target="_book-favorite"><i class="fa fa-heart" aria-hidden="true"></i></button>                                     
+                <button id="fav-key-{{workid}}_active" target="_book-favorite"><i class="fa fa-heart" aria-hidden="true"></i></button>                            
             </section>
+            {{#if (hasreview review)}}
+                <section class="fav-review">
+                    <h3>User Review</h3>
+                    <p>{{review}}</p>
+                </section>
+            {{/if}}
         {{/each}}`)
     
     templates.noResults = Handlebars.compile(`
@@ -82,3 +101,12 @@ function printResults(prints){
     }
     
 }
+
+Handlebars.registerHelper('hasreview', function (value) {
+    console.log(value)
+    if(typeof value !='undefined') {
+        return true;
+    }else{
+        return false;
+    }
+});

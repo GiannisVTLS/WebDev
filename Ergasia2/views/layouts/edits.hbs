@@ -19,22 +19,13 @@
                 <span></span>
             </div>
             <ul id="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="favorites.html">Favorites</a></li>
+                <li><a href="/static/index.html">Home</a></li>
+                <li><a href="/static/favorites.html">Favorites</a></li>
             </ul>
         </nav>
     </header>
 
-    <aside id="filter-aside">
-        <form id="filter-side" name="filter-form" class="filter">
-            <label for="filter-input">Search favorites</label> 
-            <input id="filter-input" type="text" name="filter-input" onkeyup="filterResults()" placeholder="Filter">
-        </form>
-    </aside>
-
-    <main>
-        <article id="fav-list"></article>
-    </main>
+    {{{body}}}
     
     <footer>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

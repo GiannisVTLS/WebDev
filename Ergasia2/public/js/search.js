@@ -18,28 +18,36 @@ function handleFavorites(){
     for(const element of fav){
         element.addEventListener('click', async (event) =>{
             let buttonID = event.target.parentElement.id
-            let action = 'add'
+            let action;
             if(buttonID.endsWith('active')) {
-                buttonID = event.target.parentElement.id.split("_").shift()
                 action = 'remove'
-            }
-            buttonID = buttonID.slice(9);
-            buttonID = parseInt(buttonID)
-    
-            const response = await fetch('/api/action', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    action: action,
-                    workid: works[buttonID].workid, 
-                    title: works[buttonID].titleweb,
-                    author: works[buttonID].authorweb
+                buttonID = event.target.parentElement.id.split("_").shift()
+                buttonID = buttonID.slice(9);
+                buttonID = parseInt(buttonID)
+                let toDelete = works[buttonID].workid
+                fetch(`/api/favorites/${toDelete}`, {
+                    method: "DELETE"
                 })
-            })
-            const success = await response.json()
-            
+                    .then(res => res.json())
+                    .then(() => console.log('success'))
+            }else{
+                action = 'add'
+                buttonID = buttonID.slice(9);
+                buttonID = parseInt(buttonID)
+                const response = await fetch('/api/action', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: action,
+                        workid: works[buttonID].workid, 
+                        title: works[buttonID].titleweb,
+                        author: works[buttonID].authorweb
+                    })
+                })
+                const success = await response.json()
+            }
             if(action === 'add') {
                 element.id = event.target.parentElement.id + '_active'
                 event.target.className = "fa fa-heart"
@@ -61,6 +69,7 @@ function searchBar(e){
     document.getElementById("title-list").style.display = "none";
     document.getElementById("search-center").style.display = "none";
     document.getElementById("background-loader-123").style.display = "block";
+    
     fetch('https://reststop.randomhouse.com/resources/works?start=0&max=0&expandLevel=1&search=' + encodeURIComponent(userSearch.trim()), {
         headers: {
             'Accept': 'application/json'}
@@ -85,6 +94,9 @@ function searchBar(e){
                 id = success[key]
             }
         }
+        id.forEach((ev)=>{
+            console.log(ev)
+        })
         return success
     })
     .then(() => {
@@ -134,13 +146,6 @@ function printResults(){
     div.innerHTML = temp
 }
 
-Handlebars.registerHelper('isfav', function (value) {
-    if(id.includes(value)) return true;
-});
-
-Handlebars.registerHelper('isdefined', function (value) {
-    return Array.isArray(value)
-});
 
 function printSidebar(){
     templates.searchSidebar = Handlebars.compile(`{{#each this}} 
@@ -154,3 +159,11 @@ function printSidebar(){
     let div = document.getElementById("sidebar-list")
     div.innerHTML = temp
 }
+
+Handlebars.registerHelper('isfav', function (value) {
+    if(id.includes(value)) return true;
+});
+
+Handlebars.registerHelper('isdefined', function (value) {
+    return Array.isArray(value)
+});

@@ -34,13 +34,12 @@ body {
     min-height: 100vh;
 }
 
-
+h1{
+    color:white;
+    text-align: center;
+}
 header {
     display: contents;
-}
-
-h3{
-    margin-top: 2%;
 }
 
 aside {
@@ -81,6 +80,15 @@ img {
     align-items: center;
 }
 
+.fav-review{
+    color: white;
+    background-color: #37393dea;
+    margin-right: 5%;
+    margin-left: 5%;
+    text-align: center;
+    border-radius: 0px 0px 15px 15px;
+}
+
 .fav-container {
     display: flex;
     justify-content: space-between;
@@ -88,10 +96,9 @@ img {
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.897);
     border: 1px solid rgb(39, 39, 39);
-    
 }
 
-.fav-container:first-child{
+.fav-container:nth-child(2){
     border-radius: 15px 15px 0px 0px;
 }
 
@@ -281,14 +288,11 @@ button[target=_book-favorite] {
     top: 2%;
     cursor: pointer;
     
-    opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
+    opacity: 0; 
+    z-index: 2; 
     
 }
 
-/*
- * Just a quick hamburger
- */
 #menuToggle div{
     position: relative;
     left: 5%;
@@ -305,10 +309,6 @@ button[target=_book-favorite] {
     border-radius: 3px;
 }
 
-/*
- * Make this absolute positioned
- * at the top left of the screen
- */
 #menu
 {
     justify-content: center;
@@ -334,9 +334,6 @@ button[target=_book-favorite] {
     font-size: calc(16px + 0.3vw);
 }
 
-/*
- * And let's slide it in from the left
- */
 #menuToggle input:checked ~ ul
 {
     transform: none;
@@ -425,6 +422,52 @@ button[id=go-top] {
     animation-iteration-count: infinite;
 }
 
+#form-container {
+    grid-area: main;
+    margin: 5% auto;
+    text-align: center;
+    width: 70%;
+}
+
+#form-container .button {
+    font-size: calc(12px + 0.3vw);
+    margin-top: 3%;
+    padding: 2% 1%;
+    width: 30%;
+    background-color: white;
+    cursor: pointer;
+}
+
+#form-container fieldset {
+    background: #fff;
+    border: 0 none;
+    border-radius: 15px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    margin: 0 10%;
+    padding: 5% 10%;
+}
+
+#form-container fieldset>label {
+    float: left;
+    margin-top: 5%;
+}
+
+#form-container h1 {
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: calc(16px + 0.3vw);
+    margin-bottom: 5%;
+}
+
+#form-container input, #form-container textarea{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #2C3E50;
+    margin-bottom: 4%;
+    padding: 5%;
+    width: 100%;
+}
+
 @media only screen and (max-width:650px) and (orientation: portrait) {
     aside {
         grid-area: aside;
@@ -443,7 +486,7 @@ button[id=go-top] {
     body {
         grid-template-areas: "header" "aside" "main" "footer";
         grid-template-columns: 1fr;
-        grid-template-rows: minmax(auto, 0.01fr);
+        grid-template-rows: minmax(auto, 0.001fr);
         row-gap: 10px;
     }
     .book-container {
