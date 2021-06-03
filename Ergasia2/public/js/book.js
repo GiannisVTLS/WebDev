@@ -1,11 +1,16 @@
 var templates = {};
-var favButtons = [];
 
+/**On load, print favorites and clear the filter search*/
 if (document.URL.includes("favorites.html")) {
     window.addEventListener('load', getFavorites())
     document.getElementById('filter-input').value = ''    
 } 
 
+/**Wait 1 second for more user inputs
+ * after 1 second send the user input to the server
+ * server will match keywords to titles and return the results
+ * call printResults() with the titles that matched
+ */
 var timeout
 function filterResults(){
     clearTimeout(timeout);
@@ -27,6 +32,10 @@ function filterResults(){
     }, 1000);
 }
 
+/**Get all favorites from server
+ * Then print the results
+ * Then add an on click event listener on the heart button that will delete the entry if pressed
+ */
 function getFavorites(){
     fetch('/api/favorites', {
         method: 'GET',
@@ -39,7 +48,7 @@ function getFavorites(){
         printResults(data)
     })
     .then(() =>{
-        favButtons = document.querySelectorAll('[id^="fav-key-"]');
+        let favButtons = document.querySelectorAll('[id^="fav-key-"]');
         for(const button of favButtons){
             button.addEventListener('click', (button) => {
                 let id = button.target.parentElement.id.slice(8)
@@ -54,6 +63,28 @@ function getFavorites(){
     })
 }
 
+/**
+ * on click of the trash can icon
+ * find which field was clicked (either title or author)
+ * and delete the field from that entry
+ */
+function deleteValue(e){
+    let deleteField = e.target.parentNode.id.slice(7)
+    deleteField = deleteField.split("-").shift()
+    let deleteWork = e.target.parentNode.id.slice(14)
+
+    fetch(`/api/favorites/${deleteWork}/${deleteField}`, {
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(() => location.reload())
+}
+
+/**
+ * On click of the pencil icon
+ * Post the info of the clicked work to the server
+ * Once the server gets the info go to the dynamically created edit page 
+ */
 function editFavorites(e){
     let editID = e.target.parentNode.id.slice(9)
     fetch('/api/edit', {
@@ -73,8 +104,10 @@ function printResults(prints){
         {{#each this}}
             <section class="fav-container"  id="{{workid}}">
                 <button id="edit-key-{{workid}}" onclick="editFavorites(event)" target="_edit-favorite"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                <button id="delete-titles-{{workid}}" onclick="deleteValue(event)" target="_remove-title"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 <h2 class="fav-title"">{{title}}</h2>
-                <q class="fav-author">{{author}}</q>  
+                <button id="delete-author-{{workid}}" onclick="deleteValue(event)" target="_remove-author"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <q class="fav-author">{{author}}</q> 
                 <button id="fav-key-{{workid}}_active" target="_book-favorite"><i class="fa fa-heart" aria-hidden="true"></i></button>                            
             </section>
             {{#if (hasreview review)}}
@@ -103,7 +136,6 @@ function printResults(prints){
 }
 
 Handlebars.registerHelper('hasreview', function (value) {
-    console.log(value)
     if(typeof value !='undefined') {
         return true;
     }else{

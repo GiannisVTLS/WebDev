@@ -7,11 +7,14 @@ if (document.URL.includes("index.html")) {
     document.getElementsByClassName('search')[1].addEventListener('submit', searchBar);
     
 }
+
+/**Scroll to the top */
 function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
 
+/**Listens to the favourite button, responds on click, if filled remove, if not filled add */
 function handleFavorites(){
     
     var fav = document.querySelectorAll('[id^="book-key-"]');
@@ -60,6 +63,11 @@ function handleFavorites(){
     }
 }
 
+/**Nested fetch, gets the results of the user search from the API
+ * Posts the results to the server
+ * Server searches for matches and returns works that are already favorited
+ * Posts all works and fills the favourite button if a book is already in the favorites list
+ */
 function searchBar(e){
     e.preventDefault();
     works = []
@@ -68,9 +76,8 @@ function searchBar(e){
     document.getElementById("sidebar-aside").style.display = "none";
     document.getElementById("title-list").style.display = "none";
     document.getElementById("search-center").style.display = "none";
-    document.getElementById("background-loader-123").style.display = "block";
     
-    fetch('https://reststop.randomhouse.com/resources/works?start=0&max=0&expandLevel=1&search=' + encodeURIComponent(userSearch.trim()), {
+    fetch('https://reststop.randomhouse.com/resources/works?start=0&max=20&expandLevel=1&search=' + encodeURIComponent(userSearch.trim()), {
         headers: {
             'Accept': 'application/json'}
     })
@@ -78,7 +85,7 @@ function searchBar(e){
     .then(async data => {
         works = data.work
         
-        const response = await fetch('/api/fav', {
+        const response = await fetch('/api/works', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -100,7 +107,6 @@ function searchBar(e){
         return success
     })
     .then(() => {
-        document.getElementById("background-loader-123").style.display = "none";
         document.getElementById("go-top").style.display = "block";
         document.getElementById("sidebar-aside").style.display = "flex";
         document.getElementById("title-list").style.display = "flex";
@@ -113,7 +119,12 @@ function searchBar(e){
 }
 
 
-
+/**
+ * If users search returns results, display them, else display a 'results no found' page
+ * If results are displayed, check if work is already favorited to display appropriate heart icon
+ * Last if is about the displayed book covers, some works returned a single title which resulted in a single object,
+ *      while others returned multiple titles which resulted in an array of objects
+ */
 function printResults(){
     templates.searchResults = Handlebars.compile(`
     {{#if (isdefined this)}}
@@ -146,7 +157,7 @@ function printResults(){
     div.innerHTML = temp
 }
 
-
+/**Print a sidebar with work titles, on click moves the user to the appropriate work */
 function printSidebar(){
     templates.searchSidebar = Handlebars.compile(`{{#each this}} 
     <li class="sidebar-list">

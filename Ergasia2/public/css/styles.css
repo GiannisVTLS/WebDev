@@ -10,7 +10,6 @@ html{
     margin: 0; 
     background-color: #24252A;
     font-size: 18px;
-    overflow: hidden;
     background-image: url(../@Resources/book-pattern.png);
     background-attachment: scroll;
     background-color: rgba(0, 0, 0, 0.884);
@@ -119,7 +118,7 @@ img {
 .fav-container q{
     flex: 2;
 }
-.fav-container button[target=_edit-favorite]{
+.fav-container button[target=_edit-favorite], .fav-container button[target=_remove-title], .fav-container button[target=_remove-author]{
     background: none;
     color: teal;
     border: none;
@@ -375,58 +374,12 @@ button[id=go-top] {
     background: none;
 }
 
-
-/*credit for loading element: https://codepen.io/romankosov/pen/qpvWGg*/
-#background-loader-123 {
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    cursor: wait;
-    height: 100vh;
-    position: fixed;
-    overflow: hidden;
-    padding-right: 15px;
-}
-
-@keyframes lineLoading {
-    50% {
-        transform: translate(0, 0);
-    }
-    to {
-        transform: translate(100%, 0);
-    }
-}
-
-.line-loader,
-.line-loader:after {
-    position: fixed;
-    height: 4px;
-}
-
-.line-loader {
-    top: 50%;
-    left: 50%;
-    overflow: hidden;
-    width: 25%;
-    transform: translate(-50%, -50%);
-}
-
-.line-loader:after {
-    content: "";
-    width: 100%;
-    transform: translate(-100%, 0);
-    background-color: #ffffff;
-    animation: lineLoading 4000ms cubic-bezier(0.08, 0.57, 0.97, 0.59);
-    animation-iteration-count: infinite;
-}
-
+/*form to edit favorite work field*/
 #form-container {
-    grid-area: main;
-    margin: 5% auto;
+    grid-area: 2 / 1 / span 1/ span 3;
+    margin: 0% auto;
     text-align: center;
-    width: 70%;
+    width: 40%;
 }
 
 #form-container .button {
@@ -471,6 +424,12 @@ button[id=go-top] {
 @media only screen and (max-width:650px) and (orientation: portrait) {
     aside {
         grid-area: aside;
+    }
+
+    #form-container {
+        grid-area: 2 / 1 / span 2/ span 1;
+        width: 100%;
+        margin-top: 10%;
     }
 
     #filter-side{
