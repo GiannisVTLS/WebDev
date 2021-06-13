@@ -47,20 +47,16 @@ function getFavorites(){
     .then(data =>{
         printResults(data)
     })
-    .then(() =>{
-        let favButtons = document.querySelectorAll('[id^="fav-key-"]');
-        for(const button of favButtons){
-            button.addEventListener('click', (button) => {
-                let id = button.target.parentElement.id.slice(8)
-                id = id.split("_").shift()
-                fetch(`/api/favorites/${id}`, {
-                    method: "DELETE"
-                })
-                    .then(res => res.json())
-                    .then(() => location.reload())
-            })
-        }
+}
+
+function deleteFavorite(button){
+    let id = button.target.parentElement.id.slice(8)
+    id = id.split("_").shift()
+    fetch(`/api/favorites/${id}`, {
+        method: "DELETE"
     })
+        .then(res => res.json())
+        .then(() => location.reload())
 }
 
 /**
@@ -108,7 +104,7 @@ function printResults(prints){
                 <h2 class="fav-title"">{{title}}</h2>
                 <button id="delete-author-{{workid}}" onclick="deleteValue(event)" target="_remove-author"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 <q class="fav-author">{{author}}</q> 
-                <button id="fav-key-{{workid}}_active" target="_book-favorite"><i class="fa fa-heart" aria-hidden="true"></i></button>                            
+                <button id="fav-key-{{workid}}_active" target="_book-favorite" onclick="deleteFavorite(event)"><i class="fa fa-heart" aria-hidden="true"></i></button>                            
             </section>
             {{#if (hasreview review)}}
                 <section class="fav-review">
