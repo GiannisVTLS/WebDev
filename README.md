@@ -2,7 +2,7 @@
 
 Projects created during eastern semester of 2021 for the course of Technologies and Programming of Web Applications at AUEB.
 
-<b><h2>Assignement 1</b></h2>
+<b><h2>Assignment 1</b></h2>
 
 Consists of 8 Exercises of increasing difficulty.
 
@@ -25,7 +25,7 @@ Consists of 8 Exercises of increasing difficulty.
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation" rel="nofollow">Constraint Validation API</a>
 </ul>
 
-<b><h2>Assignement 2</b></h2>
+<b><h2>Assignment 2</b></h2>
 
 A full stack web application using the <a href="http://www.penguinrandomhouse.biz/webservices/rest/">Penguin Random House API</a> and a cloud <a href="https://www.mongodb.com/">MongoDB</a> database for the use cases that require it.
 
