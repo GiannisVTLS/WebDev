@@ -54,7 +54,7 @@ A full stack web application using the <a href="http://www.penguinrandomhouse.bi
 <ol>
   <li>Install NodeJS.
   <li>Clone the project.
-  <li>Add the required NPM packages using<pre>nmp install</pre>
+  <li>Add the required nmp packages using<pre>nmp install</pre>
   <li>Start the website (after making sure port 8080 is not already in use) with:
   <pre>npm start</pre>
   <li>Open any browser (Tested will all Chromium based web browsers and Firefox) and go to:
