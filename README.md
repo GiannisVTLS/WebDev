@@ -4,7 +4,7 @@ Projects created during eastern semester of 2021 for the course of Technologies 
 
 <b><h2>Assignment 1</b></h2>
 
-Consists of 8 Exercises of increasing difficulty
+Consists of 8 Exercises of increasing difficulty.
 
 <ol>
   <li> Simple navigation page, opening this will guide you throughout the different exercises </li>
