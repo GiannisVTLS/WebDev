@@ -19,10 +19,10 @@ Consists of 8 Exercises of increasing difficulty.
 
 <h3>Made with</h3>
 <ul>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML5</a>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" rel="nofollow">CSS</a>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" rel="nofollow">JavaScript</a>
-  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation" rel="nofollow">Constraint Validation API</a>
+  <li>HTML5
+  <li>CSS
+  <li>JavaScript
+  <li>Constraint Validation API
 </ul>
 
 <b><h2>Assignment 2</b></h2>
@@ -44,17 +44,18 @@ A full stack web application using the <a href="http://www.penguinrandomhouse.bi
 
 <h3>Made with</h3>
 <ul>
-  <li><a href="https://nodejs.org/en/">NodeJS</a>
-  <li><a href="https://expressjs.com/" rel="nofollow">Express</a>
-  <li><a href="https://handlebarsjs.com/guide/" rel="nofollow">Handlebars</a>
-  <li><a href="https://mongoosejs.com/" rel="nofollow">Mongoose</a>
+  <li>NodeJS
+  <li>Express
+  <li>Handlebars
+  <li>MongoDB
+  <li>Mongoose
 </ul>
 
 <h3>How to</h3>
 <ol>
   <li>Install NodeJS.
   <li>Clone the project.
-  <li>Add the required nmp packages using<pre>nmp install</pre>
+  <li>Add the required npm packages using<pre>npm install</pre>
   <li>Start the website (after making sure port 8080 is not already in use) with:
   <pre>npm start</pre>
   <li>Open any browser (Tested will all Chromium based web browsers and Firefox) and go to:
