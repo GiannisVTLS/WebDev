@@ -1,3 +1,5 @@
+<h2>Book search, add to favorites and edit website</h2>
+
 A full stack web application using the <a href="http://www.penguinrandomhouse.biz/webservices/rest/">Penguin Random House API</a> and a cloud <a href="https://www.mongodb.com/">MongoDB</a> database for the use cases that require it.
 
 <h3>Use cases</h3>
